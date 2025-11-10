@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jake - Cybersecurity Portfolio</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #0a0e27;
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 0;
+            border-bottom: 2px solid #00ff41;
+        }
+        
+        h1 {
+            color: #00ff41;
+            font-size: 2.5em;
+            margin: 0;
+        }
+        
+        .links a {
+            color: #00ff41;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+        
+        .links a:hover {
+            text-decoration: underline;
+        }
+        
+        section {
+            margin: 40px 0;
+        }
+        
+        h2 {
+            color: #00ff41;
+            border-bottom: 1px solid #00ff41;
+            padding-bottom: 5px;
+        }
+        
+        .skills {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .skill-box {
+            background: #1a1f3a;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 3px solid #00ff41;
+        }
+        
+        .skill-box h3 {
+            color: #00d4ff;
+            margin-top: 0;
+        }
+        
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        li:before {
+            content: "▹ ";
+            color: #00ff41;
+        }
+        
+        .project {
+            background: #1a1f3a;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        
+        .project h3 {
+            color: #00d4ff;
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Jake</h1>
+        <p>Cybersecurity Student | Risk Management | Penetration Testing</p>
+        <div class="links">
+            <a href="https://linkedin.com/in/yourprofile">LinkedIn</a>
+            <a href="https://github.com/yourusername">GitHub</a>
+            <a href="https://tryhackme.com/p/yourusername">TryHackMe</a>
+            <a href="mailto:your.email@example.com">Email</a>
+        </div>
+    </header>
+
+    <section>
+        <h2>About</h2>
+        <p>Second-year Cybersecurity student at Fanshawe College (3.5 GPA) with hands-on experience in penetration testing, risk management, and security controls. Actively pursuing CEH certification and building skills through TryHackMe. Seeking co-op opportunities in technology governance and risk analysis.</p>
+    </section>
+
+    <section>
+        <h2>Technical Skills</h2>
+        <div class="skills">
+            <div class="skill-box">
+                <h3>Security Testing</h3>
+                <ul>
+                    <li>Penetration Testing</li>
+                    <li>Vulnerability Assessment</li>
+                    <li>Web App Security</li>
+                    <li>Phishing Simulations</li>
+                </ul>
+            </div>
+            
+            <div class="skill-box">
+                <h3>Tools</h3>
+                <ul>
+                    <li>Nmap, Nessus, Nikto</li>
+                    <li>Metasploit, Burp Suite</li>
+                    <li>Wireshark, GoPhish</li>
+                    <li>BeEF, SQLMap</li>
+                </ul>
+            </div>
+            
+            <div class="skill-box">
+                <h3>Network & Systems</h3>
+                <ul>
+                    <li>Cisco ASA Firewalls</li>
+                    <li>VPN (IPSec, PPTP)</li>
+                    <li>Active Directory</li>
+                    <li>Linux/Windows Admin</li>
+                </ul>
+            </div>
+            
+            <div class="skill-box">
+                <h3>Programming</h3>
+                <ul>
+                    <li>Python, Bash</li>
+                    <li>PowerShell, PHP</li>
+                    <li>SQL</li>
+                </ul>
+            </div>
+            
+            <div class="skill-box">
+                <h3>Frameworks</h3>
+                <ul>
+                    <li>NIST, COSO, COBIT</li>
+                    <li>HIPAA, SOX, PIPEDA</li>
+                    <li>Risk Management</li>
+                    <li>GRC</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Projects</h2>
+        
+        <div class="project">
+            <h3>Phishing Simulation Campaign</h3>
+            <p>Built and executed phishing simulation using GoPhish to test security awareness. Created realistic templates and developed metrics-based reporting for training recommendations.</p>
+        </div>
+        
+        <div class="project">
+            <h3>VPN Lab Infrastructure</h3>
+            <p>Configured IPSec and PPTP VPNs in GNS3 with multiple Windows VMs and Cisco routers. Simulated enterprise network environments and optimized security configurations.</p>
+        </div>
+        
+        <div class="project">
+            <h3>Web Application Penetration Testing</h3>
+            <p>Performed security assessments on DVWA and Mutillidae. Executed SQL injection, XSS, and CSRF attacks. Documented findings following OWASP guidelines.</p>
+        </div>
+        
+        <div class="project">
+            <h3>Network Protocol Analysis</h3>
+            <p>Used Wireshark for packet inspection and protocol analysis. Identified anomalous traffic patterns and investigated potential security incidents.</p>
+        </div>
+    </section>
+
+    <section>
+        <h2>Education & Certifications</h2>
+        <p><strong>Fanshawe College</strong> - Cybersecurity Program (Year 2, 3.5 GPA)</p>
+        <ul>
+            <li>TryHackMe - Active Learning Platform</li>
+            <li>CEH (Certified Ethical Hacker) - In Progress</li>
+        </ul>
+    </section>
+</body>
+</html>
