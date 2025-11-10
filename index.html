@@ -108,6 +108,7 @@
             text-decoration: none;
             transition: all 0.3s;
             font-weight: 500;
+            cursor: pointer;
         }
         
         .contact-btn:hover {
@@ -115,6 +116,96 @@
             color: #0a0e27;
             transform: translateY(-2px);
             box-shadow: 0 5px 20px rgba(0, 255, 65, 0.4);
+        }
+        
+        /* Email Modal */
+        .email-modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #1a1f3a;
+            padding: 30px;
+            border-radius: 15px;
+            border: 2px solid #00ff41;
+            z-index: 2000;
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
+        }
+        
+        .email-modal.active {
+            display: block;
+        }
+        
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1999;
+        }
+        
+        .modal-overlay.active {
+            display: block;
+        }
+        
+        .email-content {
+            text-align: center;
+        }
+        
+        .email-content h3 {
+            color: #00ff41;
+            margin-bottom: 20px;
+        }
+        
+        .email-display {
+            background: #0a0e27;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            justify-content: center;
+        }
+        
+        .email-text {
+            color: #00d4ff;
+            font-size: 1.2em;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .copy-btn {
+            background: #00ff41;
+            color: #0a0e27;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .copy-btn:hover {
+            background: #00d4ff;
+            transform: scale(1.05);
+        }
+        
+        .close-modal {
+            background: rgba(255, 255, 255, 0.1);
+            color: #e0e0e0;
+            border: 1px solid #00ff41;
+            padding: 8px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+        
+        .close-modal:hover {
+            background: rgba(255, 255, 255, 0.2);
         }
         
         /* Container */
@@ -409,6 +500,19 @@
     </style>
 </head>
 <body>
+    <!-- Email Modal -->
+    <div class="modal-overlay" id="modalOverlay"></div>
+    <div class="email-modal" id="emailModal">
+        <div class="email-content">
+            <h3>📧 Contact Email</h3>
+            <div class="email-display">
+                <span class="email-text" id="emailText">laurjosh225@gmail.com</span>
+                <button class="copy-btn" onclick="copyEmail()">Copy</button>
+            </div>
+            <button class="close-modal" onclick="closeEmailModal()">Close</button>
+        </div>
+    </div>
+
     <!-- Navigation -->
     <nav>
         <div class="container">
@@ -436,12 +540,12 @@
             <a href="https://github.com/OnWh3lls" class="contact-btn" target="_blank">
                 <span>💻</span> GitHub
             </a>
-            <a href="https://tryhackme.com/p/yourusername" class="contact-btn" target="_blank">
+            <a href="https://tryhackme.com/p/joshualaur14" class="contact-btn" target="_blank">
                 <span>🎯</span> TryHackMe
             </a>
-            <a href="mailto:your.email@example.com" class="contact-btn">
+            <button class="contact-btn" onclick="openEmailModal()">
                 <span>📧</span> Email
-            </a>
+            </button>
             <a href="tel:519-573-0849" class="contact-btn">
                 <span>📱</span> 519-573-0849
             </a>
@@ -459,10 +563,6 @@
                 
                 <div class="highlight-box">
                     <div class="highlight-item">
-                        <strong>3.5</strong>
-                        <span>GPA</span>
-                    </div>
-                    <div class="highlight-item">
                         <strong>Bilingual</strong>
                         <span>English / French</span>
                     </div>
@@ -473,6 +573,10 @@
                     <div class="highlight-item">
                         <strong>TryHackMe</strong>
                         <span>Active Learner</span>
+                    </div>
+                    <div class="highlight-item">
+                        <strong>Fanshawe</strong>
+                        <span>Year 2 Student</span>
                     </div>
                 </div>
             </div>
@@ -564,47 +668,54 @@
             <h2>Featured Projects</h2>
             <div class="projects-grid">
                 <div class="project-card">
-                    <h3>🎣 Enterprise Phishing Simulation Campaign</h3>
-                    <p>Designed and executed a comprehensive phishing simulation using GoPhish to assess organizational security awareness. Created realistic phishing templates, tracked user interactions, and developed metrics-based reporting for security training recommendations.</p>
+                    <h3>🎣 Phishing Simulation Campaign</h3>
+                    <p>Designed and executed a phishing simulation using GoPhish to assess security awareness. Created realistic templates and developed reporting for training recommendations.</p>
                     <div class="project-tags">
                         <span class="tag">GoPhish</span>
                         <span class="tag">Social Engineering</span>
-                        <span class="tag">Security Awareness</span>
-                        <span class="tag">Reporting</span>
+                        <span class="tag">Fanshawe</span>
                     </div>
                 </div>
 
                 <div class="project-card">
-                    <h3>🌐 Advanced VPN Infrastructure Lab</h3>
-                    <p>Implemented complex network topologies featuring IPSec and PPTP VPN configurations in GNS3. Integrated multiple Windows Server VMs and Cisco routers to simulate enterprise network environments. Troubleshot connectivity issues and optimized security configurations.</p>
+                    <h3>🌐 VPN Infrastructure Lab</h3>
+                    <p>Configured IPSec and PPTP VPNs in GNS3 with multiple Windows VMs and Cisco routers. Simulated enterprise network environments and optimized security configurations.</p>
                     <div class="project-tags">
                         <span class="tag">GNS3</span>
-                        <span class="tag">IPSec</span>
-                        <span class="tag">PPTP</span>
-                        <span class="tag">Cisco</span>
                         <span class="tag">VPN</span>
+                        <span class="tag">Cisco</span>
+                        <span class="tag">Fanshawe</span>
                     </div>
                 </div>
 
                 <div class="project-card">
                     <h3>🔐 Web Application Penetration Testing</h3>
-                    <p>Conducted comprehensive security assessments on intentionally vulnerable web applications (DVWA, Mutillidae). Performed SQL injection, XSS, and CSRF attacks to identify vulnerabilities. Documented findings and remediation strategies following OWASP guidelines.</p>
+                    <p>Performed security assessments on DVWA and Mutillidae. Executed SQL injection, XSS, and CSRF attacks. Documented findings following OWASP guidelines.</p>
                     <div class="project-tags">
                         <span class="tag">Burp Suite</span>
                         <span class="tag">SQL Injection</span>
                         <span class="tag">OWASP</span>
-                        <span class="tag">Web Security</span>
+                        <span class="tag">Fanshawe</span>
                     </div>
                 </div>
 
                 <div class="project-card">
-                    <h3>📡 Network Protocol Analysis & Forensics</h3>
-                    <p>Utilized Wireshark for deep packet inspection and protocol analysis. Identified anomalous network traffic patterns, analyzed DNS queries, and investigated potential security incidents through packet-level forensics.</p>
+                    <h3>🛡️ Network Security & Firewall Configuration</h3>
+                    <p>Completed TryHackMe's "Network Security" room focusing on network reconnaissance and firewall evasion techniques. Learned to identify and exploit network vulnerabilities.</p>
                     <div class="project-tags">
-                        <span class="tag">Wireshark</span>
-                        <span class="tag">Packet Analysis</span>
-                        <span class="tag">Network Forensics</span>
-                        <span class="tag">DNS</span>
+                        <span class="tag">Nmap</span>
+                        <span class="tag">Firewall</span>
+                        <span class="tag">TryHackMe</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3>🎯 Offensive Security Pentesting</h3>
+                    <p>Completed TryHackMe's "Pentesting Fundamentals" room covering essential penetration testing methodologies, reconnaissance, exploitation, and post-exploitation techniques.</p>
+                    <div class="project-tags">
+                        <span class="tag">Metasploit</span>
+                        <span class="tag">Enumeration</span>
+                        <span class="tag">TryHackMe</span>
                     </div>
                 </div>
             </div>
@@ -618,7 +729,7 @@
                     <div class="cert-icon">🎓</div>
                     <div class="cert-info">
                         <h4>Cybersecurity Program</h4>
-                        <p class="status">Year 2 • 3.5 GPA</p>
+                        <p class="status">Year 2 Student</p>
                         <p class="institution">Fanshawe College</p>
                     </div>
                 </div>
@@ -655,12 +766,9 @@
                     <a href="https://github.com/OnWh3lls" class="contact-btn" target="_blank">
                         <span>💻</span> GitHub
                     </a>
-                    <a href="mailto:your.email@example.com" class="contact-btn">
+                    <button class="contact-btn" onclick="openEmailModal()">
                         <span>📧</span> Email Me
-                    </a>
-                    <a href="tel:519-573-0849" class="contact-btn">
-                        <span>📱</span> Call Me
-                    </a>
+                    </button>
                 </div>
             </div>
         </section>
@@ -672,8 +780,34 @@
         <div class="footer-links">
             <a href="https://www.linkedin.com/in/josh-laur-276a14207" target="_blank">LinkedIn</a>
             <a href="https://github.com/OnWh3lls" target="_blank">GitHub</a>
-            <a href="https://tryhackme.com/p/yourusername" target="_blank">TryHackMe</a>
+            <a href="https://tryhackme.com/p/joshualaur14" target="_blank">TryHackMe</a>
         </div>
     </footer>
+
+    <script>
+        function openEmailModal() {
+            document.getElementById('emailModal').classList.add('active');
+            document.getElementById('modalOverlay').classList.add('active');
+        }
+
+        function closeEmailModal() {
+            document.getElementById('emailModal').classList.remove('active');
+            document.getElementById('modalOverlay').classList.remove('active');
+        }
+
+        function copyEmail() {
+            const email = document.getElementById('emailText').textContent;
+            navigator.clipboard.writeText(email).then(function() {
+                const btn = event.target;
+                btn.textContent = 'Copied!';
+                setTimeout(() => {
+                    btn.textContent = 'Copy';
+                }, 2000);
+            });
+        }
+
+        // Close modal when clicking overlay
+        document.getElementById('modalOverlay').addEventListener('click', closeEmailModal);
+    </script>
 </body>
 </html>
