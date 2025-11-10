@@ -3,193 +3,677 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jake - Cybersecurity Portfolio</title>
+    <title>Josh Laur - Cybersecurity Portfolio</title>
     <style>
-        body {
-            font-family: 'Courier New', monospace;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 20px;
-            background: #0a0e27;
-            color: #e0e0e0;
-            line-height: 1.6;
-        }
-        
-        header {
-            text-align: center;
-            padding: 40px 0;
-            border-bottom: 2px solid #00ff41;
-        }
-        
-        h1 {
-            color: #00ff41;
-            font-size: 2.5em;
+        * {
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
         
-        .links a {
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+            color: #e0e0e0;
+        }
+        
+        /* Navigation */
+        nav {
+            background: rgba(10, 14, 39, 0.95);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid #00ff41;
+            backdrop-filter: blur(10px);
+        }
+        
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        nav .logo {
             color: #00ff41;
-            margin: 0 10px;
+            font-size: 1.5em;
+            font-weight: bold;
+            font-family: 'Courier New', monospace;
+        }
+        
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+        
+        nav a {
+            color: #e0e0e0;
             text-decoration: none;
+            transition: color 0.3s;
         }
         
-        .links a:hover {
-            text-decoration: underline;
+        nav a:hover {
+            color: #00ff41;
         }
         
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 100px 20px;
+            background: linear-gradient(135deg, rgba(0, 255, 65, 0.1) 0%, rgba(0, 212, 255, 0.1) 100%);
+        }
+        
+        .hero h1 {
+            font-size: 3.5em;
+            color: #00ff41;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
+        }
+        
+        .hero .subtitle {
+            font-size: 1.5em;
+            color: #00d4ff;
+            margin-bottom: 30px;
+        }
+        
+        .hero .tagline {
+            font-size: 1.1em;
+            color: #e0e0e0;
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+        
+        .contact-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 25px;
+            background: rgba(0, 255, 65, 0.1);
+            border: 2px solid #00ff41;
+            border-radius: 8px;
+            color: #00ff41;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        
+        .contact-btn:hover {
+            background: #00ff41;
+            color: #0a0e27;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0, 255, 65, 0.4);
+        }
+        
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+        
+        /* Section Styling */
         section {
-            margin: 40px 0;
+            margin-bottom: 80px;
         }
         
         h2 {
+            font-size: 2.5em;
             color: #00ff41;
-            border-bottom: 1px solid #00ff41;
-            padding-bottom: 5px;
+            margin-bottom: 30px;
+            position: relative;
+            padding-bottom: 15px;
         }
         
-        .skills {
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, #00ff41, #00d4ff);
+        }
+        
+        /* About Section */
+        .about-content {
+            background: rgba(26, 31, 58, 0.6);
+            padding: 40px;
+            border-radius: 15px;
+            border-left: 4px solid #00ff41;
+            backdrop-filter: blur(10px);
+        }
+        
+        .about-content p {
+            font-size: 1.1em;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        
+        .highlight-box {
+            background: rgba(0, 255, 65, 0.1);
+            border: 1px solid #00ff41;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 20px;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 20px;
         }
         
-        .skill-box {
-            background: #1a1f3a;
-            padding: 15px;
-            border-radius: 5px;
-            border-left: 3px solid #00ff41;
+        .highlight-item {
+            text-align: center;
         }
         
-        .skill-box h3 {
-            color: #00d4ff;
-            margin-top: 0;
-        }
-        
-        ul {
-            list-style: none;
-            padding: 0;
-        }
-        
-        li:before {
-            content: "▹ ";
+        .highlight-item strong {
             color: #00ff41;
+            font-size: 1.3em;
+            display: block;
+            margin-bottom: 5px;
         }
         
-        .project {
-            background: #1a1f3a;
-            padding: 20px;
-            margin: 15px 0;
-            border-radius: 5px;
-        }
-        
-        .project h3 {
+        .highlight-item span {
             color: #00d4ff;
-            margin-top: 0;
+        }
+        
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        
+        .skill-card {
+            background: rgba(26, 31, 58, 0.6);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 255, 65, 0.3);
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-5px);
+            border-color: #00ff41;
+            box-shadow: 0 10px 30px rgba(0, 255, 65, 0.2);
+        }
+        
+        .skill-card h3 {
+            color: #00d4ff;
+            font-size: 1.4em;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .skill-card .icon {
+            font-size: 1.5em;
+        }
+        
+        .skill-card ul {
+            list-style: none;
+        }
+        
+        .skill-card li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            color: #e0e0e0;
+        }
+        
+        .skill-card li:before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: #00ff41;
+            font-size: 1.3em;
+        }
+        
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            gap: 30px;
+        }
+        
+        .project-card {
+            background: rgba(26, 31, 58, 0.6);
+            padding: 35px;
+            border-radius: 15px;
+            border-left: 4px solid #00d4ff;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+        }
+        
+        .project-card:hover {
+            transform: translateX(5px);
+            border-left-width: 6px;
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.2);
+        }
+        
+        .project-card h3 {
+            color: #00d4ff;
+            font-size: 1.6em;
+            margin-bottom: 15px;
+        }
+        
+        .project-card p {
+            color: #e0e0e0;
+            line-height: 1.8;
+        }
+        
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .tag {
+            background: rgba(0, 255, 65, 0.1);
+            border: 1px solid #00ff41;
+            color: #00ff41;
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 500;
+        }
+        
+        /* Certifications Section */
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .cert-card {
+            background: rgba(26, 31, 58, 0.6);
+            padding: 25px;
+            border-radius: 15px;
+            border: 2px solid rgba(0, 212, 255, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+        }
+        
+        .cert-card:hover {
+            border-color: #00d4ff;
+            box-shadow: 0 5px 20px rgba(0, 212, 255, 0.3);
+        }
+        
+        .cert-icon {
+            font-size: 3em;
+            min-width: 60px;
+            text-align: center;
+        }
+        
+        .cert-info h4 {
+            color: #00d4ff;
+            font-size: 1.2em;
+            margin-bottom: 8px;
+        }
+        
+        .cert-info .status {
+            color: #00ff41;
+            font-weight: 600;
+        }
+        
+        .cert-info .institution {
+            color: #888;
+            font-size: 0.95em;
+        }
+        
+        /* Footer */
+        footer {
+            background: rgba(10, 14, 39, 0.95);
+            padding: 40px 20px;
+            text-align: center;
+            border-top: 2px solid #00ff41;
+            margin-top: 80px;
+        }
+        
+        footer p {
+            color: #888;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            color: #00ff41;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #00d4ff;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5em;
+            }
+            
+            .hero .subtitle {
+                font-size: 1.2em;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            nav .container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            h2 {
+                font-size: 2em;
+            }
+            
+            .contact-grid {
+                flex-direction: column;
+            }
+            
+            .contact-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+        
+        /* Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Jake</h1>
-        <p>Cybersecurity Student | Risk Management | Penetration Testing</p>
-        <div class="links">
-            <a href="https://linkedin.com/in/yourprofile">LinkedIn</a>
-            <a href="https://github.com/yourusername">GitHub</a>
-            <a href="https://tryhackme.com/p/yourusername">TryHackMe</a>
-            <a href="mailto:your.email@example.com">Email</a>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">&lt;JoshLaur/&gt;</div>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#certifications">Certifications</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
         </div>
-    </header>
+    </nav>
 
-    <section>
-        <h2>About</h2>
-        <p>Second-year Cybersecurity student at Fanshawe College (3.5 GPA) with hands-on experience in penetration testing, risk management, and security controls. Actively pursuing CEH certification and building skills through TryHackMe. Seeking co-op opportunities in technology governance and risk analysis.</p>
-    </section>
-
-    <section>
-        <h2>Technical Skills</h2>
-        <div class="skills">
-            <div class="skill-box">
-                <h3>Security Testing</h3>
-                <ul>
-                    <li>Penetration Testing</li>
-                    <li>Vulnerability Assessment</li>
-                    <li>Web App Security</li>
-                    <li>Phishing Simulations</li>
-                </ul>
-            </div>
-            
-            <div class="skill-box">
-                <h3>Tools</h3>
-                <ul>
-                    <li>Nmap, Nessus, Nikto</li>
-                    <li>Metasploit, Burp Suite</li>
-                    <li>Wireshark, GoPhish</li>
-                    <li>BeEF, SQLMap</li>
-                </ul>
-            </div>
-            
-            <div class="skill-box">
-                <h3>Network & Systems</h3>
-                <ul>
-                    <li>Cisco ASA Firewalls</li>
-                    <li>VPN (IPSec, PPTP)</li>
-                    <li>Active Directory</li>
-                    <li>Linux/Windows Admin</li>
-                </ul>
-            </div>
-            
-            <div class="skill-box">
-                <h3>Programming</h3>
-                <ul>
-                    <li>Python, Bash</li>
-                    <li>PowerShell, PHP</li>
-                    <li>SQL</li>
-                </ul>
-            </div>
-            
-            <div class="skill-box">
-                <h3>Frameworks</h3>
-                <ul>
-                    <li>NIST, COSO, COBIT</li>
-                    <li>HIPAA, SOX, PIPEDA</li>
-                    <li>Risk Management</li>
-                    <li>GRC</li>
-                </ul>
-            </div>
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Josh Laur</h1>
+        <p class="subtitle">Cybersecurity Student | Risk Management | Penetration Testing</p>
+        <p class="tagline">Second-year Cybersecurity student at Fanshawe College specializing in technology governance, risk analysis, and ethical hacking</p>
+        
+        <div class="contact-grid">
+            <a href="https://www.linkedin.com/in/josh-laur-276a14207" class="contact-btn" target="_blank">
+                <span>📊</span> LinkedIn
+            </a>
+            <a href="https://github.com/OnWh3lls" class="contact-btn" target="_blank">
+                <span>💻</span> GitHub
+            </a>
+            <a href="https://tryhackme.com/p/yourusername" class="contact-btn" target="_blank">
+                <span>🎯</span> TryHackMe
+            </a>
+            <a href="mailto:your.email@example.com" class="contact-btn">
+                <span>📧</span> Email
+            </a>
+            <a href="tel:519-573-0849" class="contact-btn">
+                <span>📱</span> 519-573-0849
+            </a>
         </div>
     </section>
 
-    <section>
-        <h2>Projects</h2>
-        
-        <div class="project">
-            <h3>Phishing Simulation Campaign</h3>
-            <p>Built and executed phishing simulation using GoPhish to test security awareness. Created realistic templates and developed metrics-based reporting for training recommendations.</p>
-        </div>
-        
-        <div class="project">
-            <h3>VPN Lab Infrastructure</h3>
-            <p>Configured IPSec and PPTP VPNs in GNS3 with multiple Windows VMs and Cisco routers. Simulated enterprise network environments and optimized security configurations.</p>
-        </div>
-        
-        <div class="project">
-            <h3>Web Application Penetration Testing</h3>
-            <p>Performed security assessments on DVWA and Mutillidae. Executed SQL injection, XSS, and CSRF attacks. Documented findings following OWASP guidelines.</p>
-        </div>
-        
-        <div class="project">
-            <h3>Network Protocol Analysis</h3>
-            <p>Used Wireshark for packet inspection and protocol analysis. Identified anomalous traffic patterns and investigated potential security incidents.</p>
-        </div>
-    </section>
+    <!-- About Section -->
+    <div class="container">
+        <section id="about">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <p>I'm a dedicated second-year Cybersecurity student at Fanshawe College with a strong passion for risk management, penetration testing, and security controls. My hands-on experience spans across security assessment tools, network security infrastructure, and compliance frameworks, preparing me for real-world challenges in technology governance.</p>
+                
+                <p>Currently seeking co-op opportunities where I can apply my technical expertise and analytical mindset to help organizations strengthen their security posture. I bring a unique combination of offensive and defensive security knowledge, along with the ability to communicate complex technical concepts to diverse stakeholders.</p>
+                
+                <div class="highlight-box">
+                    <div class="highlight-item">
+                        <strong>3.5</strong>
+                        <span>GPA</span>
+                    </div>
+                    <div class="highlight-item">
+                        <strong>Bilingual</strong>
+                        <span>English / French</span>
+                    </div>
+                    <div class="highlight-item">
+                        <strong>CEH</strong>
+                        <span>In Progress</span>
+                    </div>
+                    <div class="highlight-item">
+                        <strong>TryHackMe</strong>
+                        <span>Active Learner</span>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <section>
-        <h2>Education & Certifications</h2>
-        <p><strong>Fanshawe College</strong> - Cybersecurity Program (Year 2, 3.5 GPA)</p>
-        <ul>
-            <li>TryHackMe - Active Learning Platform</li>
-            <li>CEH (Certified Ethical Hacker) - In Progress</li>
-        </ul>
-    </section>
+        <!-- Skills Section -->
+        <section id="skills">
+            <h2>Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3><span class="icon">🔍</span> Security Testing</h3>
+                    <ul>
+                        <li>Penetration Testing</li>
+                        <li>Vulnerability Assessment</li>
+                        <li>Web Application Security</li>
+                        <li>Phishing Simulations</li>
+                        <li>Security Auditing</li>
+                        <li>Risk Analysis</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card">
+                    <h3><span class="icon">🛠️</span> Security Tools</h3>
+                    <ul>
+                        <li>Nmap</li>
+                        <li>Nessus</li>
+                        <li>Metasploit Framework</li>
+                        <li>Burp Suite</li>
+                        <li>Wireshark</li>
+                        <li>GoPhish</li>
+                        <li>Nikto</li>
+                        <li>BeEF</li>
+                        <li>SQLMap</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card">
+                    <h3><span class="icon">🌐</span> Network & Systems</h3>
+                    <ul>
+                        <li>Cisco ASA Firewalls</li>
+                        <li>VPN (IPSec, PPTP)</li>
+                        <li>Active Directory</li>
+                        <li>Linux Administration</li>
+                        <li>Windows Server</li>
+                        <li>GNS3 Simulation</li>
+                        <li>Network Protocol Analysis</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card">
+                    <h3><span class="icon">💻</span> Programming</h3>
+                    <ul>
+                        <li>Python</li>
+                        <li>Bash Scripting</li>
+                        <li>PowerShell</li>
+                        <li>PHP</li>
+                        <li>SQL</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card">
+                    <h3><span class="icon">📋</span> Frameworks & Compliance</h3>
+                    <ul>
+                        <li>NIST Cybersecurity Framework</li>
+                        <li>COSO</li>
+                        <li>COBIT</li>
+                        <li>HIPAA</li>
+                        <li>SOX</li>
+                        <li>PIPEDA</li>
+                        <li>GRC (Governance, Risk, Compliance)</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card">
+                    <h3><span class="icon">🎯</span> Specializations</h3>
+                    <ul>
+                        <li>Risk Management</li>
+                        <li>Security Controls Testing</li>
+                        <li>Incident Response</li>
+                        <li>Technical Documentation</li>
+                        <li>Stakeholder Communication</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects">
+            <h2>Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>🎣 Enterprise Phishing Simulation Campaign</h3>
+                    <p>Designed and executed a comprehensive phishing simulation using GoPhish to assess organizational security awareness. Created realistic phishing templates, tracked user interactions, and developed metrics-based reporting for security training recommendations.</p>
+                    <div class="project-tags">
+                        <span class="tag">GoPhish</span>
+                        <span class="tag">Social Engineering</span>
+                        <span class="tag">Security Awareness</span>
+                        <span class="tag">Reporting</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3>🌐 Advanced VPN Infrastructure Lab</h3>
+                    <p>Implemented complex network topologies featuring IPSec and PPTP VPN configurations in GNS3. Integrated multiple Windows Server VMs and Cisco routers to simulate enterprise network environments. Troubleshot connectivity issues and optimized security configurations.</p>
+                    <div class="project-tags">
+                        <span class="tag">GNS3</span>
+                        <span class="tag">IPSec</span>
+                        <span class="tag">PPTP</span>
+                        <span class="tag">Cisco</span>
+                        <span class="tag">VPN</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3>🔐 Web Application Penetration Testing</h3>
+                    <p>Conducted comprehensive security assessments on intentionally vulnerable web applications (DVWA, Mutillidae). Performed SQL injection, XSS, and CSRF attacks to identify vulnerabilities. Documented findings and remediation strategies following OWASP guidelines.</p>
+                    <div class="project-tags">
+                        <span class="tag">Burp Suite</span>
+                        <span class="tag">SQL Injection</span>
+                        <span class="tag">OWASP</span>
+                        <span class="tag">Web Security</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <h3>📡 Network Protocol Analysis & Forensics</h3>
+                    <p>Utilized Wireshark for deep packet inspection and protocol analysis. Identified anomalous network traffic patterns, analyzed DNS queries, and investigated potential security incidents through packet-level forensics.</p>
+                    <div class="project-tags">
+                        <span class="tag">Wireshark</span>
+                        <span class="tag">Packet Analysis</span>
+                        <span class="tag">Network Forensics</span>
+                        <span class="tag">DNS</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications Section -->
+        <section id="certifications">
+            <h2>Education & Certifications</h2>
+            <div class="cert-grid">
+                <div class="cert-card">
+                    <div class="cert-icon">🎓</div>
+                    <div class="cert-info">
+                        <h4>Cybersecurity Program</h4>
+                        <p class="status">Year 2 • 3.5 GPA</p>
+                        <p class="institution">Fanshawe College</p>
+                    </div>
+                </div>
+
+                <div class="cert-card">
+                    <div class="cert-icon">🎯</div>
+                    <div class="cert-info">
+                        <h4>TryHackMe</h4>
+                        <p class="status">Active Learner</p>
+                        <p class="institution">Hands-on Security Training</p>
+                    </div>
+                </div>
+
+                <div class="cert-card">
+                    <div class="cert-icon">🔒</div>
+                    <div class="cert-info">
+                        <h4>Certified Ethical Hacker (CEH)</h4>
+                        <p class="status">In Progress</p>
+                        <p class="institution">EC-Council</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2>Let's Connect</h2>
+            <div class="about-content" style="text-align: center;">
+                <p>I'm actively seeking co-op opportunities in cybersecurity, risk management, and technology governance. Let's connect to discuss how I can contribute to your organization's security initiatives.</p>
+                <div class="contact-grid" style="margin-top: 30px;">
+                    <a href="https://www.linkedin.com/in/josh-laur-276a14207" class="contact-btn" target="_blank">
+                        <span>📊</span> LinkedIn
+                    </a>
+                    <a href="https://github.com/OnWh3lls" class="contact-btn" target="_blank">
+                        <span>💻</span> GitHub
+                    </a>
+                    <a href="mailto:your.email@example.com" class="contact-btn">
+                        <span>📧</span> Email Me
+                    </a>
+                    <a href="tel:519-573-0849" class="contact-btn">
+                        <span>📱</span> Call Me
+                    </a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Josh Laur. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="https://www.linkedin.com/in/josh-laur-276a14207" target="_blank">LinkedIn</a>
+            <a href="https://github.com/OnWh3lls" target="_blank">GitHub</a>
+            <a href="https://tryhackme.com/p/yourusername" target="_blank">TryHackMe</a>
+        </div>
+    </footer>
 </body>
 </html>
