@@ -179,6 +179,8 @@
             color: #00d4ff;
             font-size: 1.2em;
             font-family: 'Courier New', monospace;
+            /* Allow email to break if too long on small screens */
+            word-break: break-all;
         }
         
         .copy-btn {
@@ -336,6 +338,61 @@
             font-size: 1.3em;
         }
         
+        /* Experience Section */
+        .experience-grid {
+            display: grid;
+            gap: 30px;
+        }
+        
+        .experience-card {
+            background: rgba(26, 31, 58, 0.6);
+            padding: 35px;
+            border-radius: 15px;
+            border-left: 4px solid #00d4ff;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+        }
+
+        .experience-card:hover {
+            transform: translateX(5px);
+            border-left-width: 6px;
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.2);
+        }
+        
+        .experience-card h3 {
+            color: #00d4ff;
+            font-size: 1.6em;
+            margin-bottom: 10px;
+        }
+        
+        .experience-card .experience-date {
+            color: #00ff41;
+            font-style: italic;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+        
+        .experience-card ul {
+            list-style: none;
+            margin-top: 15px;
+        }
+        
+        .experience-card li {
+            padding-left: 25px;
+            position: relative;
+            margin-bottom: 10px;
+            color: #e0e0e0;
+            line-height: 1.8;
+        }
+        
+        .experience-card li:before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: #00ff41;
+            font-size: 1.3em;
+        }
+        
         /* Projects Section */
         .projects-grid {
             display: grid;
@@ -427,7 +484,7 @@
         }
         
         .cert-info .institution {
-            color: #888;
+            color: #a0a0a0; /* Brighter than 888 */
             font-size: 0.95em;
         }
         
@@ -441,7 +498,7 @@
         }
         
         footer p {
-            color: #888;
+            color: #a0a0a0;
             margin-bottom: 20px;
         }
         
@@ -473,14 +530,21 @@
             }
             
             nav ul {
-                flex-direction: column;
-                gap: 1rem;
-                text-align: center;
+                display: none; /* Simple mobile hide, menu burger would be next step */
             }
             
             nav .container {
                 flex-direction: column;
                 gap: 1rem;
+            }
+
+            /* Show nav links stacked on mobile */
+            nav ul {
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+                width: 100%;
             }
             
             nav .logo {
@@ -508,38 +572,36 @@
     </style>
 </head>
 <body>
-    <!-- Email Modal -->
     <div class="modal-overlay" id="modalOverlay"></div>
     <div class="email-modal" id="emailModal">
         <div class="email-content">
             <h3>📧 Contact Email</h3>
             <div class="email-display">
-                <span class="email-text" id="emailText">laurjosh225@gmail.com</span>
+                <span class="email-text" id="emailText">j_laur215556@fanshaweonline.ca</span>
                 <button class="copy-btn" onclick="copyEmail()">Copy</button>
             </div>
             <button class="close-modal" onclick="closeEmailModal()">Close</button>
         </div>
     </div>
 
-    <!-- Navigation -->
     <nav>
         <div class="container">
             <div class="logo">Josh Laur | Cybersecurity</div>
             <ul>
                 <li><a href="#about">About</a></li>
                 <li><a href="#skills">Skills</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#certifications">Certifications</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#education">Education</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section class="hero">
         <h1>Josh Laur</h1>
-        <p class="subtitle">Cybersecurity Student | Risk Management | Penetration Testing</p>
-        <p class="tagline">Second-year Cybersecurity student at Fanshawe College specializing in technology governance, risk analysis, and ethical hacking</p>
+        <p class="subtitle">Cybersecurity Student | Penetration Testing | Network Security</p>
+        <p class="tagline">Level 3 Cybersecurity Advanced Diploma student with demonstrated abilities in penetration testing, network security, and Active Directory administration.</p>
         
         <div class="contact-grid">
             <a href="https://www.linkedin.com/in/josh-laur-276a14207" class="contact-btn" target="_blank">
@@ -548,23 +610,19 @@
             <a href="https://github.com/OnWh3lls" class="contact-btn" target="_blank">
                 <span>💻</span> GitHub
             </a>
-            <a href="https://tryhackme.com/p/joshualaur14" class="contact-btn" target="_blank">
-                <span>🎯</span> TryHackMe
-            </a>
             <button class="contact-btn" onclick="openEmailModal()">
                 <span>📧</span> Email
             </button>
         </div>
     </section>
 
-    <!-- About Section -->
     <div class="container">
+
         <section id="about">
             <h2>About Me</h2>
             <div class="about-content">
-                <p>I'm a dedicated second-year Cybersecurity student at Fanshawe College with a strong passion for risk management, penetration testing, and security controls. My hands-on experience spans across security assessment tools, network security infrastructure, and compliance frameworks, preparing me for real-world challenges in technology governance.</p>
-                
-                <p>Currently seeking co-op opportunities where I can apply my technical expertise and analytical mindset to help organizations strengthen their security posture. I bring a unique combination of offensive and defensive security knowledge, along with the ability to communicate complex technical concepts to diverse stakeholders.</p>
+                <p>A determined and resilient Cybersecurity student seeking a co-op work environment to apply offensive and defensive security abilities. I bring hands-on experience from comprehensive phishing simulations and GitHub security projects, combined with a unique perspective on adaptability developed from overcoming major personal obstacles.</p>
+                <p>Following a life-altering motor vehicle accident, I completed an intensive rehabilitation and recovery program, demonstrating exceptional resilience and determination. This experience gave me an enhanced perspective on accessibility and adaptive technologies, which I am eager to apply to the challenges of cybersecurity.</p>
                 
                 <div class="highlight-box">
                     <div class="highlight-item">
@@ -576,58 +634,41 @@
                         <span>In Progress</span>
                     </div>
                     <div class="highlight-item">
-                        <strong>TryHackMe</strong>
-                        <span>Active Learner</span>
+                        <strong>GitHub</strong>
+                        <span>Active Portfolio</span>
                     </div>
                     <div class="highlight-item">
-                        <strong>Fanshawe</strong>
-                        <span>Year 2 Student</span>
+                        <strong>Fanshawe College</strong>
+                        <span>Cyber Security Student</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Skills Section -->
         <section id="skills">
             <h2>Technical Skills</h2>
             <div class="skills-grid">
-                <div class="skill-card">
-                    <h3><span class="icon">🔍</span> Security Testing</h3>
-                    <ul>
-                        <li>Penetration Testing</li>
-                        <li>Vulnerability Assessment</li>
-                        <li>Web Application Security</li>
-                        <li>Phishing Simulations</li>
-                        <li>Security Auditing</li>
-                        <li>Risk Analysis</li>
-                    </ul>
-                </div>
-
                 <div class="skill-card">
                     <h3><span class="icon">🛠️</span> Security Tools</h3>
                     <ul>
                         <li>Nmap</li>
                         <li>Nessus</li>
-                        <li>Metasploit Framework</li>
                         <li>Burp Suite</li>
-                        <li>Wireshark</li>
+                        <li>Hydra</li>
                         <li>GoPhish</li>
-                        <li>Nikto</li>
-                        <li>BeEF</li>
-                        <li>SQLMap</li>
+                        <li>Wireshark</li>
+                        <li>SIEM</li>
                     </ul>
                 </div>
 
                 <div class="skill-card">
-                    <h3><span class="icon">🌐</span> Network & Systems</h3>
+                    <h3><span class="icon">🌐</span> Systems Administration</h3>
                     <ul>
-                        <li>Cisco ASA Firewalls</li>
-                        <li>VPN (IPSec, PPTP)</li>
                         <li>Active Directory</li>
-                        <li>Linux Administration</li>
-                        <li>Windows Server</li>
-                        <li>GNS3 Simulation</li>
-                        <li>Network Protocol Analysis</li>
+                        <li>Group Policy Objects</li>
+                        <li>iptables</li>
+                        <li>OpenVPN</li>
+                        <li>NTFS Permissions</li>
                     </ul>
                 </div>
 
@@ -635,116 +676,114 @@
                     <h3><span class="icon">💻</span> Programming</h3>
                     <ul>
                         <li>Python</li>
-                        <li>Bash Scripting</li>
+                        <li>Bash</li>
                         <li>PowerShell</li>
                         <li>PHP</li>
-                        <li>SQL</li>
+                        <li>MySQL</li>
+                        <li>JavaScript</li>
                     </ul>
                 </div>
 
                 <div class="skill-card">
-                    <h3><span class="icon">📋</span> Frameworks & Compliance</h3>
+                    <h3><span class="icon">📡</span> Networking</h3>
+                    <ul>
+                        <li>TCP/IP</li>
+                        <li>OSPF</li>
+                        <li>VLANs</li>
+                        <li>NAT & ACLs</li>
+                        <li>DHCP / DNS</li>
+                        <li>Packet Analysis</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card">
+                    <h3><span class="icon">📋</span> Frameworks & Concepts</h3>
                     <ul>
                         <li>NIST Cybersecurity Framework</li>
-                        <li>COSO</li>
-                        <li>COBIT</li>
-                        <li>HIPAA</li>
-                        <li>SOX</li>
-                        <li>PIPEDA</li>
-                        <li>GRC (Governance, Risk, Compliance)</li>
+                        <li>OWASP Top 10</li>
+                        <li>Risk Assessment</li>
+                        <li>Incident Response</li>
+                        <li>Vulnerability Assessment</li>
+                        <li>Digital Forensics</li>
                     </ul>
                 </div>
 
                 <div class="skill-card">
-                    <h3><span class="icon">🎯</span> Specializations</h3>
+                    <h3><span class="icon">🎯</span> Core Competencies</h3>
                     <ul>
-                        <li>Risk Management</li>
-                        <li>Security Controls Testing</li>
-                        <li>Incident Response</li>
+                        <li>Problem-Solving</li>
+                        <li>Team Collaboration</li>
                         <li>Technical Documentation</li>
-                        <li>Stakeholder Communication</li>
+                        <li>Continuous Learning</li>
+                        <li>Resilience & Adaptability</li>
+                        <li>Crisis Management</li>
                     </ul>
                 </div>
             </div>
         </section>
 
-        <!-- Portfolio Section -->
-        <section id="portfolio">
-            <h2>Portfolio</h2>
+        <section id="experience">
+            <h2>Experience</h2>
+            <div class="experience-grid">
+                <div class="experience-card">
+                    <h3>Professional Development & Recovery Period</h3>
+                    <p class="experience-date">January 2023 - December 2024</p>
+                    <ul>
+                        <li>Completed a major intensive rehabilitation and recovery program following a life-altering motor vehicle accident, demonstrating exceptional resilience and determination.</li>
+                        <li>Participated in a specialized medical research trial and advanced rehabilitation program at the Christopher Reeve Foundation.</li>
+                        <li>Developed an enhanced perspective on accessibility, adaptive technologies, and inclusive design principles valuable in cybersecurity contexts.</li>
+                    </ul>
+                </div>
+
+                <div class="experience-card">
+                    <h3>Team Member - Kitchen Operations</h3>
+                    <p class="experience-date">Tim Hortons, Strathroy, ON | October 2020 - December 2022</p>
+                    <ul>
+                        <li>Managed end-of-shift task completion in a high-pressure environment requiring strict timeline adherence.</li>
+                        <li>Trained new employees on standardized procedures, ensuring consistency and operational efficiency.</li>
+                        <li>Maintained perfect compliance with all health standards through systematic quality control and documentation.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>Projects</h2>
             <div class="projects-grid">
                 <div class="project-card">
-                    <h3>🎣 Phishing Simulation Campaign</h3>
-                    <p>Designed and executed a phishing simulation using GoPhish to assess security awareness. Created realistic templates and developed reporting for training recommendations.</p>
+                    <h3>🎣 End-to-End Phishing Simulation Project</h3>
+                    <p>Designed a complete social engineering campaign demonstrating an understanding of human psychological manipulation tactics. Built a realistic phishing infrastructure including SMTP configuration, HTML email templates, and credential harvesting portals. Developed a comprehensive awareness training component to educate users on identifying phishing red flags and attack vectors to mitigate human risk.</p>
                     <div class="project-tags">
                         <span class="tag">GoPhish</span>
                         <span class="tag">Social Engineering</span>
-                        <span class="tag">Fanshawe</span>
+                        <span class="tag">Risk Mitigation</span>
+                        <span class="tag">User Training</span>
                     </div>
                 </div>
 
                 <div class="project-card">
-                    <h3>🌐 VPN Infrastructure Lab</h3>
-                    <p>Configured IPSec and PPTP VPNs in GNS3 with multiple Windows VMs and Cisco routers. Simulated enterprise network environments and optimized security configurations.</p>
+                    <h3>💻 GitHub Security Portfolio</h3>
+                    <p>Maintained an active cybersecurity research portfolio with multiple security automation tools and projects. (You can add more details here or link directly to the projects).</p>
                     <div class="project-tags">
-                        <span class="tag">GNS3</span>
-                        <span class="tag">VPN</span>
-                        <span class="tag">Cisco</span>
-                        <span class="tag">Fanshawe</span>
+                        <span class="tag">Python</span>
+                        <span class="tag">Bash</span>
+                        <span class="tag">Automation</span>
+                        <span class="tag">GitHub</span>
                     </div>
                 </div>
-
-                <div class="project-card">
-                    <h3>🔐 Web Application Penetration Testing</h3>
-                    <p>Performed security assessments on DVWA and Mutillidae. Executed SQL injection, XSS, and CSRF attacks. Documented findings following OWASP guidelines.</p>
-                    <div class="project-tags">
-                        <span class="tag">Burp Suite</span>
-                        <span class="tag">SQL Injection</span>
-                        <span class="tag">OWASP</span>
-                        <span class="tag">Fanshawe</span>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <h3>🛡️ Network Security & Firewall Configuration</h3>
-                    <p>Completed TryHackMe's "Network Security" room focusing on network reconnaissance and firewall evasion techniques. Learned to identify and exploit network vulnerabilities.</p>
-                    <div class="project-tags">
-                        <span class="tag">Nmap</span>
-                        <span class="tag">Firewall</span>
-                        <span class="tag">TryHackMe</span>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <h3>🎯 Offensive Security Pentesting</h3>
-                    <p>Completed TryHackMe's "Pentesting Fundamentals" room covering essential penetration testing methodologies, reconnaissance, exploitation, and post-exploitation techniques.</p>
-                    <div class="project-tags">
-                        <span class="tag">Metasploit</span>
-                        <span class="tag">Enumeration</span>
-                        <span class="tag">TryHackMe</span>
-                    </div>
-                </div>
+                
             </div>
         </section>
 
-        <!-- Certifications Section -->
-        <section id="certifications">
+        <section id="education">
             <h2>Education & Certifications</h2>
             <div class="cert-grid">
                 <div class="cert-card">
                     <div class="cert-icon">🎓</div>
                     <div class="cert-info">
-                        <h4>Cybersecurity Program</h4>
-                        <p class="status">Year 2 Student</p>
+                        <h4>Cyber Security Advanced Diploma (Co-op)</h4>
+                        <p class="status">Expected Graduation: Dec 2027</p>
                         <p class="institution">Fanshawe College</p>
-                    </div>
-                </div>
-
-                <div class="cert-card">
-                    <div class="cert-icon">🎯</div>
-                    <div class="cert-info">
-                        <h4>TryHackMe</h4>
-                        <p class="status">Active Learner</p>
-                        <p class="institution">Hands-on Security Training</p>
                     </div>
                 </div>
 
@@ -756,14 +795,22 @@
                         <p class="institution">EC-Council</p>
                     </div>
                 </div>
+
+                <div class="cert-card">
+                    <div class="cert-icon">🎓</div>
+                    <div class="cert-info">
+                        <h4>Ontario Secondary School Diploma</h4>
+                        <p class="status">French Immersion</p>
+                        <span class="institution">Strathroy District Collegiate Institute</span>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <!-- Contact Section -->
         <section id="contact">
             <h2>Let's Connect</h2>
             <div class="about-content" style="text-align: center;">
-                <p>I'm actively seeking co-op opportunities in cybersecurity, risk management, and technology governance. Let's connect to discuss how I can contribute to your organization's security initiatives.</p>
+                <p>I'm actively seeking co-op opportunities in cybersecurity. Let's connect to discuss how I can apply my skills and unique perspective to help strengthen your organization's security posture.</p>
                 <div class="contact-grid" style="margin-top: 30px;">
                     <a href="https://www.linkedin.com/in/josh-laur-276a14207" class="contact-btn" target="_blank">
                         <span>📊</span> LinkedIn
@@ -779,13 +826,11 @@
         </section>
     </div>
 
-    <!-- Footer -->
     <footer>
         <p>&copy; 2025 Josh Laur. All rights reserved.</p>
         <div class="footer-links">
             <a href="https://www.linkedin.com/in/josh-laur-276a14207" target="_blank">LinkedIn</a>
             <a href="https://github.com/OnWh3lls" target="_blank">GitHub</a>
-            <a href="https://tryhackme.com/p/joshualaur14" target="_blank">TryHackMe</a>
         </div>
     </footer>
 
@@ -804,9 +849,10 @@
             const email = document.getElementById('emailText').textContent;
             navigator.clipboard.writeText(email).then(function() {
                 const btn = event.target;
+                const originalText = btn.textContent;
                 btn.textContent = 'Copied!';
                 setTimeout(() => {
-                    btn.textContent = 'Copy';
+                    btn.textContent = originalText;
                 }, 2000);
             });
         }
